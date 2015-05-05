@@ -1,0 +1,44 @@
+
+EAnd.    Exp ::= Exp "and" Exp1 ;
+EOr.     Exp ::= Exp "or" Exp1 ;
+ENot.    Exp ::= "not" Exp1 ;
+EEq.     Exp1 ::= Exp1 "=" Exp2 ;
+Elt.     Exp1 ::= Exp1 "<" Exp2 ;
+EAdd.    Exp2  ::= Exp2 "+" Exp3 ;
+ESub.    Exp2  ::= Exp2 "-" Exp3 ;
+Einc.    Exp2 ::= "Inc(" Exp ")" ;
+Edec.    Exp2 ::= "Dec(" Exp ")" ;
+Ediv.    Exp3 ::= Exp3 "/" Exp4 ;
+EMul.    Exp3 ::= Exp3 "*" Exp4 ;
+
+EInt.    Exp4 ::= Integer ;
+Evar.    Exp4 ::= String ;
+coercions Exp 4 ;
+
+Assign.  Ass ::= String ":=" Exp ;
+
+Sass.    Stm ::= Ass ";" ;
+Sempty.  Stm ::= ";" ;
+Swhile.  Stm ::= "while" "(" Exp ")" "do" Stm ;
+Selif.   Stm ::= "if" "(" Exp ")" "then" Stm "else" Stm "fi" ;
+Sif.     Stm ::= "if" "(" Exp ")" "then" Stm "fi" ;
+SBlock.  Stm ::= "begin" Stm "end" ;
+Scall.   Stm ::= "call" String "(" [String] ")" ;
+Sfort.   Stm ::= "for" Ass "to" Exp Stm ;
+Sford.   Stm ::= "for" Ass "downto" Exp Stm ;
+Sprint.  Stm ::= "print" String ;
+
+  
+VDecl.   Vdec ::= "var" String ";" ;
+ADecr.   Adec ::= "var" String ;
+ADecv.   Adec ::= Exp ;
+PDecl.   Pdec ::= "procedure" String "(" [Adec] ")" Stm ";" ;
+
+separator Vdec "" ;
+separator Pdec "" ;
+separator Adec ";" ;
+separator Stm ";" ;
+separator String ";" ;
+
+Prog.    Prg ::= [Vdec] [Pdec] [Stm] ;
+
