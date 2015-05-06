@@ -1,0 +1,50 @@
+entrypoints Prg ;
+
+separator Dec "" ;
+separator Adec "," ;
+separator Stm "" ;
+separator Ident "," ;
+separator Exp "," ;
+comment "//" ;
+
+Prog.    Prg ::= "program" [Dec] [Stm] ;
+
+VDecl.   Dec ::= "var" Ident ";" ;
+VDeclass.   Dec ::= "var" Ident ":=" Exp ";" ;
+ADecr.   Adec ::= "var" Ident ;
+ADecv.   Adec ::= Ident ;
+PDecl.   Dec ::= "procedure" Ident "(" [Adec] ")" Stm ;
+
+Assign.  Ass ::= Ident ":=" Exp ;
+
+Sass.    Stm ::= Ass ";" ;
+Sempty.  Stm ::= ";" ;
+Swhile.  Stm ::= "while" "(" Exp ")" "do" Stm ;
+Selif.   Stm ::= "if" "(" Exp ")" "then" Stm "else" Stm "fi" ;
+Sif.     Stm ::= "if" "(" Exp ")" "then" Stm "fi" ;
+SBlock.  Stm ::= "begin" [Stm] "end" ;
+Scall.   Stm ::= "call" Ident "(" [Exp] ")" ;
+Sfort.   Stm ::= "for" Ass "to" Exp "do" Stm ;
+Sford.   Stm ::= "for" Ass "downto" Exp "do" Stm ;
+Sprint.  Stm ::= "print" Exp ";" ;
+Sprintstr. Stm ::= "print" String ";" ;
+
+EAnd.    Exp ::= Exp "and" Exp1 ;
+EOr.     Exp ::= Exp "or" Exp1 ;
+ENot.    Exp ::= "not" Exp1 ;
+EEq.     Exp1 ::= Exp1 "=" Exp2 ;
+Eneq.    Exp1 ::= Exp1 "<>" Exp2 ;
+Elt.     Exp1 ::= Exp1 "<" Exp2 ;
+Egt.     Exp1 ::= Exp1 ">" Exp2 ;
+Eelt.    Exp1 ::= Exp1 "<=" Exp2 ;
+Eegt.    Exp1 ::= Exp1 ">=" Exp2 ;
+EAdd.    Exp2  ::= Exp2 "+" Exp3 ;
+ESub.    Exp2  ::= Exp2 "-" Exp3 ;
+Einc.    Exp2 ::= "Inc(" Exp ")" ;
+Edec.    Exp2 ::= "Dec(" Exp ")" ;
+Ediv.    Exp3 ::= Exp3 "/" Exp4 ;
+EMul.    Exp3 ::= Exp3 "*" Exp4 ;
+
+EInt.    Exp4 ::= Integer ;
+Evar.    Exp4 ::= Ident ;
+coercions Exp 4 ;

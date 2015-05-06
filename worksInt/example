@@ -1,0 +1,87 @@
+program
+var u := (1+2);
+var p := u + 2;
+var r := 4;
+var x;
+var y;
+var z;
+var t := 3/1;
+procedure mnoz(var x, y, z)
+begin
+	print "wypisuje y, powinno byc 10";
+	y := y*2;
+	print y;
+	z := 2;
+	x := z*y;
+end
+procedure dziel(var x, y, z)
+begin
+	x := 3;;;;
+end
+procedure dodaj(var x, y)
+begin
+	x := y + 2;
+end
+procedure rec(var x, y)
+begin
+	print x;
+	x := x + y;
+	if (x < 10) then
+		call rec(x,y)
+	fi
+end
+print p;
+print r;
+print u;
+call rec(p,1);
+print "powinno byc 10";
+print p;
+call dodaj(u,3);
+print "powinno byc 5";
+print u;
+call mnoz(u,p,r)
+print "wypisuje y po procedurze, powinno byc 0";
+print y;
+print x;
+print p;
+print r;
+print u;
+x := 5;
+print "sprawdzenie wyrazen";
+if (x = 5) then
+begin
+	x := 6;
+	y := 5;
+end
+else
+	x := 1;
+fi
+print x;
+if (x=6) then
+begin 
+	x := 4;
+end
+fi
+print x;
+for x:=4 downto 1 do
+begin
+	print x;
+	x := x + 3;
+end
+print x;
+if (x<10) then
+	print "x mniejsze od 10";
+fi
+while (x<10) do
+begin
+	print (x<10);
+	x := x + 3;
+	print x;
+end
+print x;
+print "sprawdzanie wyrazen";
+print "exp: true";
+print (20+3 < (2+10)*2 and 20 > 21);
+print x;
+print Dec(x+2);
+print x;
