@@ -49,8 +49,8 @@ getObject :: String -> MI (Either Proc Val)
 getObject x = do
     e <- ask
     s <- getStore
-    let loc = fromMaybe (error "not initialized variable") (M.lookup x e)
-    let obj = fromMaybe (error "not initialized variable") (M.lookup loc s)
+    let loc = fromMaybe (error "not initialized ident") (M.lookup x e)
+    let obj = fromMaybe (error "not initialized ident") (M.lookup loc s)
     return obj
 
 printOut :: String -> MI ()
@@ -287,6 +287,10 @@ prepareEnv env exps args =
             let newEnv = M.insert x loc currEnv
             e2 <- (prep newEnv exps ps)
             return e2
+        prep currEnv [] p = do
+			error "wrong number of arguments"
+        prep currEnv s [] = do 
+			error "wrong number of arguments"
 
 ---------lista intrukcji------------------------------------------------
 
