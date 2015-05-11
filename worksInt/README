@@ -1,0 +1,8 @@
+Krzysztof Rutkowski, 11.05.2015, interpreter języka pastiny
+Program uruchamiamy poleceniem make. 
+Uruchomienie programu ./interpreter plik z programem.
+Na wyjściu programu zostaje wypisane wyjście z polecenia "print".
+Gramatyka języka w pliku pastiny.cf.
+Przy budowaniu leksera i parsera korzystałem z bnfc, nazwy odpowiednich
+plików standardowe.
+Kod interpretera znajduje się w pliku Interpret.hs.
